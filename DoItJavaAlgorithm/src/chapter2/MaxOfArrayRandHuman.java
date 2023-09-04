@@ -3,7 +3,7 @@ package chapter2;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MaxOfArrayRand {
+public class MaxOfArrayRandHuman {
     static int maxOf(int[] a) {
         int max = a[0];
         for(int i = 1; i < a.length; i++) {
@@ -16,9 +16,8 @@ public class MaxOfArrayRand {
         Random rand = new Random();
         Scanner stdIn = new Scanner(System.in);
 
-        System.out.println("키의 최댓값을 구합니다.");
-        System.out.print("사람 수 : ");
-        int num = stdIn.nextInt();
+        System.out.println("랜덤한 사람 수에 대한 키의 최댓값을 구합니다.");
+        int num = 1 + rand.nextInt(10);
 
         int[] height = new int[num];
 
