@@ -2,27 +2,30 @@ package chapter6;
 
 import java.util.Scanner;
 
-public class InsertionSort {
+public class ShellSort {
     static void swap(int[] a, int idx1, int idx2) {
         int t = a[idx1];
         a[idx1] = a[idx2];
         a[idx2] = t;
     }
 
-    static void insertionSort(int[] a, int n) {
-        for(int i = 1; i < n; i++) {
-            int j;
-            int tmp = a[i];
-            for(j = i; j > 0 && a[j - 1] > tmp; j--)
-                a[j] = a[j - 1];
-            a[j] = tmp;
+    static void ShellSort(int[] a, int n) {
+        for(int h = n / 2; h > 0; h /= 2) {
+            for(int i = h; i < n; i++) {
+                int j;
+                int tmp = a[i];
+                for(j = i - h; j >= 0 && a[j] > tmp; j -= h) {
+                    a[j + h] = a[j];
+                }
+                a[j + h] = tmp;
+            }
         }
     }
 
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
 
-        System.out.println("삽입 정렬");
+        System.out.println("선택 정렬");
         System.out.print("요솟수 : ");
 
         int nx = stdIn.nextInt();
@@ -33,7 +36,7 @@ public class InsertionSort {
             x[i] = stdIn.nextInt();
         }
 
-        insertionSort(x, nx);
+        ShellSort(x, nx);
 
         System.out.println("오름차순으로 정렬했습니다.");
         for(int i = 0; i < nx; i++) {
